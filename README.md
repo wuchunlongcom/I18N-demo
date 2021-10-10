@@ -1,4 +1,4 @@
-##############################################################################
+```
 国际化 多国语言  demo
 
 打开终端 --> 点击右边的【终端】；再打开终端 -->【commmond】【T】
@@ -9,8 +9,9 @@ $ source  /Users/wuchunlong/local/env375/bin/activate
 $ cd /Users/wuchunlong/local/github/I18N-demo
 运行
 $ ./start.sh
-##############################################################################
+```
 
+```
 国际化 多国语言 技术要点
 
 一、应用目标下../I18N-demo/mysite
@@ -54,7 +55,9 @@ $ django-admin.py compilemessages   #产生新的django.mo
 
 六、../I18N-demo
 $ ./start.sh
+```
 
+```
 附：最简模板test-i18n.html
 <!DOCTYPE html>
 {% load i18n %}
@@ -67,3 +70,4 @@ $ ./start.sh
        {% trans 'Welcome to use a computer.' %} <!--add-->
   </body>
 </html>
+```
