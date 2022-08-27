@@ -28,18 +28,18 @@ TIME_ZONE = 'Asia/Shanghai'
 USE_I18N = True
 
 三、应用目标下../I18N-demo/mysite
-$ django-admin makemessages -l zh_Hans -e py
+$ 生成.po  django-admin makemessages -l zh_Hans -e py
 processing locale zh_Hans  
-$ django-admin makemessages -l zh_Hans -e html,txt -e xml
+$ 生成.po django-admin makemessages -l zh_Hans -e html,txt -e xml
 processing locale zh_CN      #产生 django.po
 
-四、../I18N-demo/mysite/locale/zh_Hans/LC_MESSAGES/django.po
+四、vim /Users/wuchunlong/local/github/I18N-demo/mysite/locale/zh_Hans/LC_MESSAGES/django.po
 # 在文件 django.po 中添加
-...
 ...
 
 msgid "Search System"
 msgstr "搜索系统"
+
 
 msgid "Gaoyu Media"
 msgstr "高域传媒"
@@ -50,7 +50,12 @@ msgstr "欢迎使用计算机"
 msgid "Return"
 msgstr "返回首页"
 
-五、../I18N-demo
+
+msgid "i18n demo"
+msgstr "国际化演示"
+
+
+五、生成mo文件   ../I18N-demo
 $ django-admin.py compilemessages   #产生新的django.mo
 
 六、../I18N-demo
@@ -58,7 +63,46 @@ $ ./start.sh
 ```
 
 ```
+{% extends "base.html" %}
+
+{% block body %}
+   
+    {% block content %}{% endblock %}
+    
+{% endblock %}
+```
+
+```
+{% extends "account/layout.html" %}
+{% block body %}
+{% load i18n %}
+<div class="container theme-showcase" role="main">
+    <br><br><br><br>   
+    <div class="col-md-1 column"></div>
+    <div class="col-md-12 column">
+        <div class="jumbotron"> 
+            <div class="text-center" ><h3>{% trans 'Search System' %}<h3></div>
+            <a href='' class="btn btn-lg btn-danger btn-block" >{% trans 'Gaoyu Media' %}</a>
+            <br/><br/>  
+            <a href='/classroominfo' class="btn btn-lg btn-danger btn-block" >{% trans 'Welcome to use a computer.' %}</a>
+            <br/><br/>
+
+
+        </div> 
+
+    </div>
+
+    
+     <div class="col-md-12 column">
+        <a href='/' class="btn btn-lg btn-success btn-block">{% trans 'Return' %}</a>
+    </div><br><br><br> 
+</div>
+{% endblock %}
+
+
+
 附：最简模板test-i18n.html
+
 <!DOCTYPE html>
 {% load i18n %}
 <html lang="zh-Hans">
